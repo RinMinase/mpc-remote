@@ -152,8 +152,7 @@ function configureProduction(webpackConfig) {
 	webpackConfig.plugins.push(new CleanWebpackPlugin());
 	webpackConfig.plugins.push(new CopyPlugin({
 		patterns: [
-			{ from: "assets", to: "assets", globOptions: { ignore: ["_redirects"] } },
-			{ from: "assets/_redirects", to: "_redirects", toType: "file" }
+			{ from: "assets", to: "assets" },
 		]
 	}));
 }
