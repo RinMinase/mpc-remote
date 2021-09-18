@@ -1,0 +1,17 @@
+{
+  "include": [ "./src/**/*.ts", "./src/**/*.tsx" ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "lib": ["esnext", "dom"],
+    "moduleResolution": "node",
+    "target": "es5",
+    
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+  }
+}
