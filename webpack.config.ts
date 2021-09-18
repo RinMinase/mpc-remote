@@ -11,7 +11,7 @@ import TerserPlugin from "terser-webpack-plugin";
 module.exports = (_env, arg) => {
 	const isProduction = arg.mode === "production";
 
-	const webpackConfig:Configuration = {
+	const webpackConfig: Configuration = {
 		mode: "development",
 		entry: "./src/index.tsx",
 		output: {
@@ -80,32 +80,16 @@ function configureChildStyles(sourceMap) {
 }
 
 /**
- * This configures TypeScript loaders and linters
+ * This configures TypeScript loaders
  */
 function configureTypescript() {
-	const lintingRules = {
-		rules: {
-			indent: [ true, "tabs", 2 ],
-			quotemark: [ true, "double", "jsx-double" ],
-			semicolon: [ true, "always" ],
-			"max-line-length": [ true, 100 ]
-		}
-	}
-
 	return [{
 		test: /\.ts(x?)$/,
-		use: ["ts-loader", {
-			loader: "tslint-loader",
-			options: {
-				configuration: lintingRules,
-				formatter: "grouped",
-				formattersDirectory: 'node_modules/custom-tslint-formatters/formatters/',
-			}
-		}]
+		use: ["ts-loader"]
 	}, {
 		enforce: "pre",
 		test: /\.js$/,
-		use: [ "source-map-loader" ]
+		use: ["source-map-loader"]
 	}];
 }
 
@@ -116,7 +100,7 @@ function configureTypescript() {
  */
 function configureBundleProcess(isProduction) {
 	const KB = 1024;
-	const bundleConfig:Configuration = {
+	const bundleConfig: Configuration = {
 		resolve: { extensions: [".ts", ".tsx", ".js"] },
 		optimization: {
 			splitChunks: {
@@ -168,7 +152,7 @@ function configureProduction(webpackConfig) {
 	webpackConfig.plugins.push(new CleanWebpackPlugin());
 	webpackConfig.plugins.push(new CopyPlugin({
 		patterns: [
-			{ from: "assets", to: "assets", globOptions: { ignore: ["_redirects"] }},
+			{ from: "assets", to: "assets", globOptions: { ignore: ["_redirects"] } },
 			{ from: "assets/_redirects", to: "_redirects", toType: "file" }
 		]
 	}));
