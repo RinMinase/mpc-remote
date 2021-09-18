@@ -1,11 +1,11 @@
 <h1 align="center"> MPC-HC Remote </h1>
 
 <p align="center">
-    <a href="https://david-dm.org/RinMinase/mpchc-remote">
-        <img alt="David-DM" src="https://img.shields.io/david/RinMinase/mpchc-remote?style=for-the-badge">
+    <a href="https://david-dm.org/RinMinase/mpc-remote">
+        <img alt="David-DM" src="https://img.shields.io/david/RinMinase/mpc-remote?style=for-the-badge">
     </a>
-    <a href="https://david-dm.org/RinMinase/mpchc-remote">
-        <img alt="David-DM" src="https://img.shields.io/david/dev/RinMinase/mpchc-remote?label=dev%20dependencies&style=for-the-badge">
+    <a href="https://david-dm.org/RinMinase/mpc-remote">
+        <img alt="David-DM" src="https://img.shields.io/david/dev/RinMinase/mpc-remote?label=dev%20dependencies&style=for-the-badge">
     </a>
 </p>
 
@@ -68,8 +68,8 @@ Installations Required:
 3. Clone the project
 
     ```
-    git clone https://github.com/RinMinase/mpchc-remote.git
-    cd mpchc-remote
+    git clone https://github.com/RinMinase/mpc-remote.git
+    cd mpc-remote
     ```
 
 4. Install the dependencies then run the project

@@ -1,12 +1,12 @@
 {
-  "name": "mpchc-remote",
+  "name": "mpc-remote",
   "version": "0.1.0",
   "private": true,
   "author": "Rin Minase",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/RinMinase/mpchc-remote"
+    "url": "https://github.com/RinMinase/mpc-remote"
   },
   "scripts": {
     "start": "webpack serve",
