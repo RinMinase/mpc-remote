@@ -46,5 +46,10 @@ export async function play() {
 }
 
 export async function pause() {
-	return axios.post(MPC, { wm_command: 888 });
+	const data = {
+		wm_command: 888,
+		null: 0,
+	};
+
+	return axios.post(MPC, qs.stringify(data), config);
 }
