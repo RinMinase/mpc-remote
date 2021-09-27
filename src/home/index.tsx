@@ -2,11 +2,15 @@ import { default as React, useEffect } from "react";
 import c from "clsx";
 
 import style from "./index.scss";
-import { getUser } from "./actions";
+
+import { play } from "./actions";
 
 export default function Home() {
+	const handlePlay = async () => {
+		await play();
+	}
+
 	useEffect(async () => {
-		await getUser();
 	}, []);
 
 	return (
@@ -35,7 +39,7 @@ export default function Home() {
 			</div>
 
 			<div className={style.playButtonContainer}>
-				<button className={style.playButton}>
+				<button className={style.playButton} onClick={handlePlay}>
 					<i className={"material-icons " + style.playIcon}>play_arrow</i>
 					{/* <i class="material-icons">pause</i> */}
 				</button>
