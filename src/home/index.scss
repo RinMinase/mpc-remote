@@ -1,3 +1,5 @@
+$button-bg: #323232;
+
 .container {
 	padding: 20px 15px;
 	text-align: center;
@@ -34,7 +36,7 @@
 	border: 0;
 	border-radius: 999px;
 	width: 150px;
-	background-color: #323232;
+	background-color: $button-bg;
 	color: #c7c7c7;
 	font-size: 16px;
 }
@@ -48,9 +50,16 @@
 	color: #e3e3e3;
 }
 
-.playButtonContainer {
-	padding-top: 42px;
+.midContainer {
+	display: flex;
+	padding-top: 24px;
 	padding-bottom: 32px;
+}
+
+.playButtonContainer {
+	display: inline-block;
+	width: 50%;
+	padding-top: 32px;
 }
 
 .playButton {
@@ -58,11 +67,25 @@
 	width: 150px;
 	border-radius: 100%;
 	border: 0;
-	background-color: #323232;
+	background-color: $button-bg;
 }
 
 .playIcon {
 	font-size: 125px;
+}
+
+.audioSubsContainer {
+	display: inline-block;
+	width: 25%;
+}
+
+.audioSubsButton {
+	height: 48px;
+	width: 48px;
+	padding-top: 3px;
+	border: 0;
+	border-radius: 100%;
+	background-color: $button-bg;
 }
 
 .fwdRwdContainer {
@@ -100,7 +123,7 @@
 		appearance: none;
 		width: 25px;
 		height: 25px;
-		border-radius: 50%; 
+		border-radius: 50%;
 		background: #fff;
 		cursor: pointer;
 	}

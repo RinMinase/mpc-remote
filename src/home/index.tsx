@@ -38,11 +38,25 @@ export default function Home() {
 				</button>
 			</div>
 
-			<div className={style.playButtonContainer}>
-				<button className={style.playButton} onClick={handlePlay}>
-					<i className={"material-icons " + style.playIcon}>play_arrow</i>
-					{/* <i class="material-icons">pause</i> */}
-				</button>
+			<div className={style.midContainer}>
+				<div className={style.audioSubsContainer}>
+					<button className={style.audioSubsButton}>
+						<i class="material-icons">audiotrack</i>
+					</button>
+				</div>
+
+				<div className={style.playButtonContainer}>
+					<button className={style.playButton} onClick={handlePlay}>
+						<i className={"material-icons " + style.playIcon}>play_arrow</i>
+						{/* <i class="material-icons">pause</i> */}
+					</button>
+				</div>
+
+				<div className={style.audioSubsContainer}>
+					<button className={style.audioSubsButton}>
+						<i class="material-icons">closed_caption</i>
+					</button>
+				</div>
 			</div>
 
 			<div className={c(style.col6, style.fwdRwdContainer)}>
