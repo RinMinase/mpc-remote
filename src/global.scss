@@ -1,13 +1,16 @@
+@import "~material-design-icons/iconfont/material-icons.css";
 @import "~scss-spinners/components/round";
 
 html {
-	font-family: Roboto, Arial, Helvetica, sans-serif
+	font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 body {
 	margin: 0;
+	background-color: #121212;
+	color: #e4e4e4;
 }
 
-.container {
-	padding: 35px 20px 30px;
+i {
+	color: #9f9f9f;
 }
