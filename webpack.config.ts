@@ -6,7 +6,6 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import CopyPlugin from "copy-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 
 module.exports = (_env, arg) => {
@@ -36,7 +35,7 @@ module.exports = (_env, arg) => {
 			new Dotenv(),
 			new HtmlWebpackPlugin({
 				template: "src/index.html",
-				favicon: "assets/favicon.ico",
+				favicon: "src/favicon.ico",
 			}),
 			new MiniCssExtractPlugin({ filename: "[name].bundle.[contenthash:5].css" })
 		]
@@ -155,9 +154,4 @@ function configureProduction(webpackConfig) {
 		terserOptions: { output: { comments: false } }
 	}));
 	webpackConfig.plugins.push(new CleanWebpackPlugin());
-	webpackConfig.plugins.push(new CopyPlugin({
-		patterns: [
-			{ from: "assets", to: "assets" },
-		]
-	}));
 }
