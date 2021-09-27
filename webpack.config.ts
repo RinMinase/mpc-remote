@@ -32,7 +32,10 @@ module.exports = (_env, arg) => {
 		...configureBundleProcess(isProduction),
 		stats: configureLogStats(),
 		plugins: [
-			new HtmlWebpackPlugin({ template: "src/index.html" }),
+			new HtmlWebpackPlugin({
+				template: "src/index.html",
+				favicon: "assets/favicon.ico",
+			}),
 			new MiniCssExtractPlugin({ filename: "[name].bundle.[contenthash:5].css" })
 		]
 	}
