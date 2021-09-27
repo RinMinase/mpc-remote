@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.10.1",
+    "@types/react": "^17.0.24",
     "@types/webpack-dev-server": "^4.1.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
