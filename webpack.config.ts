@@ -27,7 +27,7 @@ module.exports = (_env, arg) => {
 			]
 		},
 		devServer: {
-			port: 3000,
+			port: process.env.port || 3000,
 			historyApiFallback: true
 		},
 		...configureBundleProcess(isProduction),
