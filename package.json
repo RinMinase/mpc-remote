@@ -21,7 +21,7 @@
     "scss-spinners": "^2.0.4"
   },
   "devDependencies": {
-    "@types/node": "^16.9.2",
+    "@types/node": "^16.10.1",
     "@types/webpack-dev-server": "^4.1.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
