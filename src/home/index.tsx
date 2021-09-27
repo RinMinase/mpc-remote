@@ -1,17 +1,39 @@
-import { default as React, useEffect } from "react";
+import { default as React, useEffect, useState } from "react";
 import c from "clsx";
 
 import style from "./index.scss";
 
-import { play } from "./actions";
+import { pause, play, status } from "./actions";
 
 export default function Home() {
+	const [playerStatus, setPlayerStatus] = useState({
+		filename: "",
+		status: 0,
+		volume: 0,
+	});
+
+	const port = process.env.port || "3000";
+	let interval: NodeJS.Timer;
+
 	const handlePlay = async () => {
 		await play();
 	}
 
-	useEffect(async () => {
+	const handlePause = async () => {
+		await pause();
+	}
+
+	useEffect(() => {
+		if (window.location.port !== port) {
+			interval = setInterval(async () => {
+				setPlayerStatus(await status());
+			}, 1000);
+		}
 	}, []);
+
+	useEffect(() => () => {
+		if (interval) clearInterval(interval);
+	}, [])
 
 	return (
 		<div className={style.container}>
@@ -28,46 +50,51 @@ export default function Home() {
 
 			<div className={style.col6}>
 				<button className={style.button}>
-					<i class="material-icons">undo</i>
+					<i className="material-icons">undo</i>
 				</button>
 			</div>
 
 			<div className={style.col6}>
 				<button className={style.button}>
-					<i class="material-icons">redo</i>
+					<i className="material-icons">redo</i>
 				</button>
 			</div>
 
 			<div className={style.midContainer}>
 				<div className={style.audioSubsContainer}>
 					<button className={style.audioSubsButton}>
-						<i class="material-icons">audiotrack</i>
+						<i className="material-icons">audiotrack</i>
 					</button>
 				</div>
 
 				<div className={style.playButtonContainer}>
-					<button className={style.playButton} onClick={handlePlay}>
-						<i className={"material-icons " + style.playIcon}>play_arrow</i>
-						{/* <i class="material-icons">pause</i> */}
-					</button>
+					{playerStatus.status ? (
+						<button className={style.playButton} onClick={handlePause}>
+							<i className={"material-icons " + style.playIcon}>pause</i>
+						</button>
+					) : (
+						<button className={style.playButton} onClick={handlePlay}>
+							<i className={"material-icons " + style.playIcon}>play_arrow</i>
+						</button>
+					)}
 				</div>
 
 				<div className={style.audioSubsContainer}>
 					<button className={style.audioSubsButton}>
-						<i class="material-icons">closed_caption</i>
+						<i className="material-icons">closed_caption</i>
 					</button>
 				</div>
 			</div>
 
 			<div className={c(style.col6, style.fwdRwdContainer)}>
 				<button className={style.button}>
-					<i class="material-icons">fast_rewind</i>
+					<i className="material-icons">fast_rewind</i>
 				</button>
 			</div>
 
 			<div className={c(style.col6, style.fwdRwdContainer)}>
 				<button className={style.button}>
-					<i class="material-icons">fast_forward</i>
+					<i className="material-icons">fast_forward</i>
 				</button>
 			</div>
 
@@ -79,7 +106,7 @@ export default function Home() {
 						style.volumeButtonMinus
 					)}
 				>
-					<i class="material-icons">remove</i>
+					<i className="material-icons">remove</i>
 				</button>
 			</div>
 
@@ -91,8 +118,8 @@ export default function Home() {
 						style.volumeButtonMute
 					)}
 				>
-					<i class="material-icons">volume_off</i>
-					{/* <i class="material-icons">volume_up</i> */}
+					<i className="material-icons">volume_off</i>
+					{/* <i className="material-icons">volume_up</i> */}
 				</button>
 			</div>
 
@@ -104,7 +131,7 @@ export default function Home() {
 						style.volumeButtonPlus
 					)}
 				>
-					<i class="material-icons">add</i>
+					<i className="material-icons">add</i>
 				</button>
 			</div>
 
