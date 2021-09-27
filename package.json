@@ -30,6 +30,7 @@
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.3.0",
     "custom-tslint-formatters": "^2.4.0",
+    "dotenv-webpack": "^7.0.3",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.3.0",
     "sass-loader": "^12.1.0",
