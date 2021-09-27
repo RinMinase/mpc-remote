@@ -1,6 +1,7 @@
 import path from "path";
 import { Configuration } from "webpack";
 
+import Dotenv from "dotenv-webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
@@ -32,6 +33,7 @@ module.exports = (_env, arg) => {
 		...configureBundleProcess(isProduction),
 		stats: configureLogStats(),
 		plugins: [
+			new Dotenv(),
 			new HtmlWebpackPlugin({
 				template: "src/index.html",
 				favicon: "assets/favicon.ico",
