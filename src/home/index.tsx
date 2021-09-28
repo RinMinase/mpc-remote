@@ -8,6 +8,7 @@ import * as actions from "./actions";
 import useLongPress from "./longpress";
 
 export default function Home() {
+	const [disabledRemote, setDisabledRemote] = useState(true);
 	const [volumeSlider, setVolumeSlider] = useState(0);
 	const [playerStatus, setPlayerStatus] = useState({
 		filename: "— Not Playing —",
@@ -39,6 +40,10 @@ export default function Home() {
 
 		await actions.close();
 		unmount();
+	};
+
+	const handleReload = async () => {
+		window.location.reload();
 	};
 
 	const handlePrev = async () => {
@@ -114,11 +119,14 @@ export default function Home() {
 
 	useEffect(() => {
 		if (window.location.port !== port) {
+			setDisabledRemote(false);
+
 			interval = setInterval(async () => {
 				const status = await actions.status();
 
 				if (!status.hasOwnProperty("filename")) {
 					unmount();
+					setDisabledRemote(true);
 				} else {
 					setPlayerStatus(status);
 				}
@@ -139,17 +147,27 @@ export default function Home() {
 			</div>
 
 			<div className={style.close}>
-				<button
-					className={c(style.button, style.closeButton)}
-					onClick={handleClose}
-				>
-					CLOSE
-				</button>
+				{disabledRemote ? (
+					<button
+						className={c(style.button, style.reloadButton)}
+						onClick={handleReload}
+					>
+						RELOAD
+					</button>
+				) : (
+					<button
+						className={c(style.button, style.closeButton)}
+						onClick={handleClose}
+					>
+						CLOSE
+					</button>
+				)}
 			</div>
 
 			<div className={style.col6}>
 				<button
 					className={style.button}
+					disabled={disabledRemote}
 					onClick={handlePrev}
 					{...handlePrevHold}
 				>
@@ -160,6 +178,7 @@ export default function Home() {
 			<div className={style.col6}>
 				<button
 					className={style.button}
+					disabled={disabledRemote}
 					onClick={handleNext}
 					{...handleNextHold}
 				>
@@ -169,38 +188,62 @@ export default function Home() {
 
 			<div className={style.midContainer}>
 				<div className={style.audioSubsContainer}>
-					<button className={style.audioSubsButton} onClick={handleAudio}>
+					<button
+						className={style.audioSubsButton}
+						disabled={disabledRemote}
+						onClick={handleAudio}
+					>
 						<i className="material-icons">audiotrack</i>
 					</button>
 				</div>
 
 				<div className={style.playButtonContainer}>
 					{playerStatus.status ? (
-						<button className={style.playButton} onClick={handlePause}>
+						<button
+							className={style.playButton}
+							disabled={disabledRemote}
+							onClick={handlePause}
+						>
 							<i className={"material-icons " + style.playIcon}>pause</i>
 						</button>
 					) : (
-						<button className={style.playButton} onClick={handlePlay}>
+						<button
+							className={style.playButton}
+							disabled={disabledRemote}
+							onClick={handlePlay}
+						>
 							<i className={"material-icons " + style.playIcon}>play_arrow</i>
 						</button>
 					)}
 				</div>
 
 				<div className={style.audioSubsContainer}>
-					<button className={style.audioSubsButton} onClick={handleSubtitle}>
+					<button
+						className={style.audioSubsButton}
+						disabled={disabledRemote}
+						onClick={handleSubtitle}
+					>
 						<i className="material-icons">closed_caption</i>
 					</button>
 				</div>
 			</div>
 
 			<div className={c(style.col6, style.fwdRwdContainer)}>
-				<button className={style.button} onClick={handleBack}>
+				<button
+					className={style.button}
+					disabled={disabledRemote}
+					onClick={handleBack}
+				>
 					<i className="material-icons">fast_rewind</i>
 				</button>
 			</div>
 
 			<div className={c(style.col6, style.fwdRwdContainer)}>
-				<button className={style.button} onClick={handleForward}>
+				<button
+					className={style.button}
+					disabled={disabledRemote}
+					onClick={handleForward}
+				>
 					<i className="material-icons">fast_forward</i>
 				</button>
 			</div>
@@ -212,6 +255,7 @@ export default function Home() {
 						style.volumeButton,
 						style.volumeButtonMinus
 					)}
+					disabled={disabledRemote}
 					onClick={handleVolumeDown}
 				>
 					<i className="material-icons">remove</i>
@@ -225,6 +269,7 @@ export default function Home() {
 						style.volumeButton,
 						style.volumeButtonMute
 					)}
+					disabled={disabledRemote}
 					onClick={handleVolumeMute}
 				>
 					{playerStatus.muted ? (
@@ -242,6 +287,7 @@ export default function Home() {
 						style.volumeButton,
 						style.volumeButtonPlus
 					)}
+					disabled={disabledRemote}
 					onClick={handleVolumeUp}
 				>
 					<i className="material-icons">add</i>
@@ -253,10 +299,11 @@ export default function Home() {
 					type="range"
 					min="0"
 					max="100"
-					value={volumeSlider}
-					onChange={handleVolumeSlider}
-					className={style.volumeSlider}
 					name="volume"
+					disabled={disabledRemote}
+					value={volumeSlider}
+					className={style.volumeSlider}
+					onChange={handleVolumeSlider}
 				/>
 			</div>
 		</div>
