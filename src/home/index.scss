@@ -41,6 +41,7 @@ $button-bg: #323232;
 	background-color: $button-bg;
 	color: #c7c7c7;
 	font-size: 16px;
+	user-select: none;
 }
 
 .close {
@@ -70,6 +71,7 @@ $button-bg: #323232;
 	border-radius: 100%;
 	border: 0;
 	background-color: $button-bg;
+	user-select: none;
 }
 
 .playIcon {
@@ -88,6 +90,7 @@ $button-bg: #323232;
 	border: 0;
 	border-radius: 100%;
 	background-color: $button-bg;
+	user-select: none;
 }
 
 .fwdRwdContainer {
