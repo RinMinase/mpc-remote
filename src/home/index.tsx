@@ -1,4 +1,4 @@
-import { default as React, SyntheticEvent, useEffect, useRef, useState } from "react";
+import { default as React, useEffect, useRef, useState } from "react";
 import { debounce } from "lodash-es";
 import c from "clsx";
 
@@ -23,13 +23,18 @@ export default function Home() {
 		}, 150)
 	);
 
-	const unmount = () => {
+	const disablePoll = () => {
 		if (interval) clearInterval(interval);
+	};
+
+	const disableRemote = () => {
+		setDisabledRemote(true);
+		disablePoll();
 	};
 
 	const blur = async () => {
 		if (document.activeElement instanceof HTMLElement) {
-			await new Promise(res => setTimeout(res, 75));
+			await new Promise((res) => setTimeout(res, 75));
 			document.activeElement.blur();
 		}
 	};
@@ -45,8 +50,8 @@ export default function Home() {
 			volume: 0,
 		});
 
+		disableRemote();
 		await actions.close();
-		unmount();
 	};
 
 	const handleReload = async () => {
@@ -146,8 +151,7 @@ export default function Home() {
 				const status = await actions.status();
 
 				if (!status.hasOwnProperty("filename")) {
-					unmount();
-					setDisabledRemote(true);
+					disableRemote();
 				} else {
 					setPlayerStatus(status);
 				}
@@ -159,7 +163,7 @@ export default function Home() {
 		setVolumeSlider(playerStatus.volume);
 	}, [playerStatus.volume]);
 
-	useEffect(() => unmount, []);
+	useEffect(() => disablePoll, []);
 
 	return (
 		<div className={style.container}>
