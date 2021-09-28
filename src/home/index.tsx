@@ -4,12 +4,13 @@ import c from "clsx";
 
 import style from "./index.scss";
 
-import { pause, play, status, volumeSet } from "./actions";
+import { pause, play, status, volumeDown, volumeMute, volumeSet, volumeUp } from "./actions";
 
 export default function Home() {
 	const [volumeSlider, setVolumeSlider] = useState(0);
 	const [playerStatus, setPlayerStatus] = useState({
 		filename: "None",
+		muted: 0,
 		status: 0,
 		volume: 0,
 	});
@@ -27,6 +28,18 @@ export default function Home() {
 
 	const handlePause = async () => {
 		await pause();
+	};
+
+	const handleVolumeUp = async () => {
+		await volumeUp();
+	};
+
+	const handleVolumeDown = async () => {
+		await volumeDown();
+	};
+
+	const handleVolumeMute = async () => {
+		await volumeMute();
 	};
 
 	const handleVolumeSlider = async ({ target }) => {
@@ -117,6 +130,7 @@ export default function Home() {
 						style.volumeButton,
 						style.volumeButtonMinus
 					)}
+					onClick={handleVolumeDown}
 				>
 					<i className="material-icons">remove</i>
 				</button>
@@ -129,9 +143,13 @@ export default function Home() {
 						style.volumeButton,
 						style.volumeButtonMute
 					)}
+					onClick={handleVolumeMute}
 				>
-					<i className="material-icons">volume_off</i>
-					{/* <i className="material-icons">volume_up</i> */}
+					{playerStatus.muted ? (
+						<i className="material-icons">volume_up</i>
+					) : (
+						<i className="material-icons">volume_off</i>
+					)}
 				</button>
 			</div>
 
@@ -142,6 +160,7 @@ export default function Home() {
 						style.volumeButton,
 						style.volumeButtonPlus
 					)}
+					onClick={handleVolumeUp}
 				>
 					<i className="material-icons">add</i>
 				</button>
