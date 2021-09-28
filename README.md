@@ -56,9 +56,9 @@ Steps:
 7. Open up the options of `MPC-HC` under `View > Options`
 
 8. Navigate to `Web Interface` and:
-    - [x] check `Listen on port`
-    - [x] check `Serve pages from:`
-    - [ ] uncheck `Allow access from localhost only`
+    - [x] **check** `Listen on port`
+    - [x] **check** `Serve pages from:`
+    - [ ] **un-check** `Allow access from localhost only`
 
     **Note:** Remember the `port number` in `Listen on port`, by default this is `13579`
 
