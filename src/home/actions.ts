@@ -1,10 +1,10 @@
 import axios from "axios";
 import qs from "qs";
 
-const MPC_BASE_DOMAIN = process.env.MPC_BASE_DOMAIN || "localhost";
-const MPC_BASE_PORT = process.env.MPC_BASE_PORT || "13579";
-const MPC = `http://${MPC_BASE_DOMAIN}:${MPC_BASE_PORT}/command.html`;
-const MPC_STATUS = `http://${MPC_BASE_DOMAIN}:${MPC_BASE_PORT}/status.html`;
+const MPC_DOMAIN = process.env.LOCAL_COMPUTER_IP || "localhost";
+const MPC_PORT = process.env.MPC_PORT || "13579";
+const MPC = `http://${MPC_DOMAIN}:${MPC_PORT}/command.html`;
+const MPC_STATUS = `http://${MPC_DOMAIN}:${MPC_PORT}/status.html`;
 
 const config = {
 	headers: {
