@@ -1,27 +1,38 @@
-import { default as React, useEffect, useState } from "react";
+import { default as React, useEffect, useRef, useState } from "react";
+import { debounce } from "lodash-es";
 import c from "clsx";
 
 import style from "./index.scss";
 
-import { pause, play, status } from "./actions";
+import { pause, play, status, volumeSet } from "./actions";
 
 export default function Home() {
+	const [volumeSlider, setVolumeSlider] = useState(0);
 	const [playerStatus, setPlayerStatus] = useState({
 		filename: "None",
 		status: 0,
 		volume: 0,
 	});
 
+	const setSliderDebounced = useRef(debounce(async (value: number) => {
+		await volumeSet(+value);
+	}, 150));
+
 	const port = process.env.port || "3000";
 	let interval: NodeJS.Timer;
 
 	const handlePlay = async () => {
 		await play();
-	}
+	};
 
 	const handlePause = async () => {
 		await pause();
-	}
+	};
+
+	const handleVolumeSlider = async ({ target }) => {
+		setVolumeSlider(target.value);
+		setSliderDebounced.current(target.value);
+	};
 
 	useEffect(() => {
 		if (window.location.port !== port) {
@@ -137,7 +148,15 @@ export default function Home() {
 			</div>
 
 			<div className={style.volumeSliderContainer}>
-				{/* <input type="range" min="1" max="100" value="0" className={style.volumeSlider} /> */}
+				<input
+					type="range"
+					min="0"
+					max="100"
+					value={volumeSlider}
+					onChange={handleVolumeSlider}
+					className={style.volumeSlider}
+					name="volume"
+				/>
 			</div>
 		</div>
 	);
