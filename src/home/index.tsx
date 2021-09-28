@@ -27,7 +27,7 @@ export default function Home() {
 		if (window.location.port !== port) {
 			interval = setInterval(async () => {
 				setPlayerStatus(await status());
-			}, 1000);
+			}, 1500);
 		}
 	}, []);
 
