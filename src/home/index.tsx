@@ -4,23 +4,75 @@ import c from "clsx";
 
 import style from "./index.scss";
 
-import { pause, play, status, volumeDown, volumeMute, volumeSet, volumeUp } from "./actions";
+import {
+	audio,
+	backKeyframe,
+	close,
+	fwdKeyframe,
+	nextChapter,
+	nextFile,
+	pause,
+	play,
+	previousChapter,
+	previousFile,
+	status,
+	subtitle,
+	volumeDown,
+	volumeMute,
+	volumeSet,
+	volumeUp,
+} from "./actions";
+import useLongPress from "./longpress";
 
 export default function Home() {
 	const [volumeSlider, setVolumeSlider] = useState(0);
 	const [playerStatus, setPlayerStatus] = useState({
-		filename: "None",
+		filename: "— Not Playing —",
 		muted: 0,
 		status: 0,
 		volume: 0,
 	});
 
-	const setSliderDebounced = useRef(debounce(async (value: number) => {
-		await volumeSet(+value);
-	}, 150));
+	const setSliderDebounced = useRef(
+		debounce(async (value: number) => {
+			await volumeSet(+value);
+		}, 150)
+	);
+
+	const unmount = () => {
+		if (interval) clearInterval(interval);
+	};
 
 	const port = process.env.port || "3000";
 	let interval: NodeJS.Timer;
+
+	const handleClose = async () => {
+		await close();
+	};
+
+	const handlePrev = async () => {
+		await previousChapter();
+	};
+
+	const handlePrevHold = useLongPress(async () => {
+		await previousFile();
+	});
+
+	const handleNext = async () => {
+		await nextChapter();
+	};
+
+	const handleNextHold = useLongPress(async () => {
+		await nextFile();
+	});
+
+	const handleAudio = async () => {
+		await audio();
+	};
+
+	const handleSubtitle = async () => {
+		await subtitle();
+	};
 
 	const handlePlay = async () => {
 		await play();
@@ -30,11 +82,33 @@ export default function Home() {
 		await pause();
 	};
 
+	const handleBack = async () => {
+		await backKeyframe();
+	};
+
+	const handleForward = async () => {
+		await fwdKeyframe();
+	};
+
 	const handleVolumeUp = async () => {
+		if (volumeSlider !== 100) {
+			let currVolume = volumeSlider + 1;
+
+			while (currVolume % 5 !== 0) currVolume++;
+			setVolumeSlider(currVolume);
+		}
+
 		await volumeUp();
 	};
 
 	const handleVolumeDown = async () => {
+		if (volumeSlider !== 0) {
+			let currVolume = volumeSlider - 1;
+
+			while (currVolume % 5 !== 0) currVolume--;
+			setVolumeSlider(currVolume);
+		}
+
 		await volumeDown();
 	};
 
@@ -57,41 +131,48 @@ export default function Home() {
 
 	useEffect(() => {
 		setVolumeSlider(playerStatus.volume);
-	}, [playerStatus.volume])
+	}, [playerStatus.volume]);
 
-	useEffect(() => () => {
-		if (interval) clearInterval(interval);
-	}, [])
+	useEffect(() => unmount, []);
 
 	return (
 		<div className={style.container}>
 			<div className={style.headerContainer}>
-				<p className={style.header}>
-					{playerStatus.filename}
-				</p>
+				<p className={style.header}>{playerStatus.filename}</p>
 			</div>
 
 			<div className={style.close}>
-				<button className={c(style.button, style.closeButton)}>
+				<button
+					className={c(style.button, style.closeButton)}
+					onClick={handleClose}
+				>
 					CLOSE
 				</button>
 			</div>
 
 			<div className={style.col6}>
-				<button className={style.button}>
+				<button
+					className={style.button}
+					onClick={handlePrev}
+					{...handlePrevHold}
+				>
 					<i className="material-icons">undo</i>
 				</button>
 			</div>
 
 			<div className={style.col6}>
-				<button className={style.button}>
+				<button
+					className={style.button}
+					onClick={handleNext}
+					{...handleNextHold}
+				>
 					<i className="material-icons">redo</i>
 				</button>
 			</div>
 
 			<div className={style.midContainer}>
 				<div className={style.audioSubsContainer}>
-					<button className={style.audioSubsButton}>
+					<button className={style.audioSubsButton} onClick={handleAudio}>
 						<i className="material-icons">audiotrack</i>
 					</button>
 				</div>
@@ -109,20 +190,20 @@ export default function Home() {
 				</div>
 
 				<div className={style.audioSubsContainer}>
-					<button className={style.audioSubsButton}>
+					<button className={style.audioSubsButton} onClick={handleSubtitle}>
 						<i className="material-icons">closed_caption</i>
 					</button>
 				</div>
 			</div>
 
 			<div className={c(style.col6, style.fwdRwdContainer)}>
-				<button className={style.button}>
+				<button className={style.button} onClick={handleBack}>
 					<i className="material-icons">fast_rewind</i>
 				</button>
 			</div>
 
 			<div className={c(style.col6, style.fwdRwdContainer)}>
-				<button className={style.button}>
+				<button className={style.button} onClick={handleForward}>
 					<i className="material-icons">fast_forward</i>
 				</button>
 			</div>
