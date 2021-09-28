@@ -32,10 +32,14 @@ export async function status() {
 
 				const stFull = fnFull[1].split("\", ");
 				const status: number = stFull[0] === "Playing" ? 1 : 0;
-				const volume: number = +stFull[3].split(", ")[1];
+
+				const volFull = stFull[3].split(", ");
+				const muted: number = +volFull[0];
+				const volume: number = +volFull[1];
 
 				return {
 					filename,
+					muted,
 					status,
 					volume,
 				};
