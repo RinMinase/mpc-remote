@@ -7,7 +7,7 @@ import { pause, play, status } from "./actions";
 
 export default function Home() {
 	const [playerStatus, setPlayerStatus] = useState({
-		filename: "",
+		filename: "None",
 		status: 0,
 		volume: 0,
 	});
@@ -39,13 +39,14 @@ export default function Home() {
 		<div className={style.container}>
 			<div className={style.headerContainer}>
 				<p className={style.header}>
-					Filename - Very Long Long Long Long
-					Long Long Long Long Long Long Filename
+					{playerStatus.filename}
 				</p>
 			</div>
 
 			<div className={style.close}>
-				<button className={c(style.button, style.closeButton)}>CLOSE</button>
+				<button className={c(style.button, style.closeButton)}>
+					CLOSE
+				</button>
 			</div>
 
 			<div className={style.col6}>
