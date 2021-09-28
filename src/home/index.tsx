@@ -273,9 +273,9 @@ export default function Home() {
 					onClick={handleVolumeMute}
 				>
 					{playerStatus.muted ? (
-						<i className="material-icons">volume_up</i>
-					) : (
 						<i className="material-icons">volume_off</i>
+					) : (
+						<i className="material-icons">volume_up</i>
 					)}
 				</button>
 			</div>
