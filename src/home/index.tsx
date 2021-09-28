@@ -13,7 +13,7 @@ export default function Home() {
 	const [playerStatus, setPlayerStatus] = useState({
 		filename: "— Not Playing —",
 		muted: 0,
-		status: 0,
+		status: 1,
 		volume: 0,
 	});
 
@@ -91,11 +91,21 @@ export default function Home() {
 	};
 
 	const handlePlay = async () => {
+		const status = { ...playerStatus };
+
+		status.status = +!status.status;
+		setPlayerStatus({...status});
+
 		blur();
 		await actions.play();
 	};
 
 	const handlePause = async () => {
+		const status = { ...playerStatus };
+
+		status.status = +!status.status;
+		setPlayerStatus({...status});
+
 		blur();
 		await actions.pause();
 	};
