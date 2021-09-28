@@ -59,6 +59,10 @@ $button-bg-highlight: #585858;
 	&:focus {
 		background-color: $button-bg-highlight;
 	}
+
+	&:active {
+		background-color: $button-bg-highlight;
+	}
 }
 
 .close {
