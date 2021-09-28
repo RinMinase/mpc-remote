@@ -12,6 +12,13 @@ const config = {
 	}
 }
 
+const data = (wm_command: number) => {
+	return qs.stringify({
+		wm_command,
+		null: 0,
+	});
+};
+
 export async function status() {
 	return axios.get(MPC_STATUS, config)
 		.then((response) => {
@@ -36,19 +43,9 @@ export async function status() {
 }
 
 export async function play() {
-	const data = {
-		wm_command: 887,
-		null: 0,
-	};
-
-	return axios.post(MPC, qs.stringify(data), config);
+	return axios.post(MPC, data(887), config);
 }
 
 export async function pause() {
-	const data = {
-		wm_command: 888,
-		null: 0,
-	};
-
-	return axios.post(MPC, qs.stringify(data), config);
+	return axios.post(MPC, data(888), config);
 }
