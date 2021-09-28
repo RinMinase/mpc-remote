@@ -8,7 +8,6 @@ const MPC_STATUS = `http://${MPC_BASE_DOMAIN}:${MPC_BASE_PORT}/status.html`;
 
 const config = {
 	headers: {
-		"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
 		"Content-Type": "application/x-www-form-urlencoded",
 	}
 }
