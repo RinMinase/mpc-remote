@@ -12,10 +12,11 @@ const config = {
 	}
 }
 
-const data = (wm_command: number) => {
+const data = (wm_command: number, param?: object) => {
 	return qs.stringify({
 		wm_command,
 		null: 0,
+		...param,
 	});
 };
 
@@ -48,4 +49,76 @@ export async function play() {
 
 export async function pause() {
 	return axios.post(MPC, data(888), config);
+}
+
+export async function previousChapter() {
+	return axios.post(MPC, data(921), config);
+}
+
+export async function nextChapter() {
+	return axios.post(MPC, data(922), config);
+}
+
+export async function previousFile() {
+	return axios.post(MPC, data(920), config);
+}
+
+export async function nextFile() {
+	return axios.post(MPC, data(919), config);
+}
+
+export async function audio() {
+	return axios.post(MPC, data(952), config);
+}
+
+export async function subtitle() {
+	return axios.post(MPC, data(954), config);
+}
+
+export async function fwdKeyframe() {
+	return axios.post(MPC, data(898), config);
+}
+
+export async function fwdSmall() {
+	return axios.post(MPC, data(900), config);
+}
+
+export async function fwdMedium() {
+	return axios.post(MPC, data(902), config);
+}
+
+export async function fwdLarge() {
+	return axios.post(MPC, data(904), config);
+}
+
+export async function backKeyframe() {
+	return axios.post(MPC, data(897), config);
+}
+
+export async function backSmall() {
+	return axios.post(MPC, data(899), config);
+}
+
+export async function backMedium() {
+	return axios.post(MPC, data(901), config);
+}
+
+export async function backLarge() {
+	return axios.post(MPC, data(903), config);
+}
+
+export async function volumeUp() {
+	return axios.post(MPC, data(907), config);
+}
+
+export async function volumeDown() {
+	return axios.post(MPC, data(908), config);
+}
+
+export async function volumeMute() {
+	return axios.post(MPC, data(909), config);
+}
+
+export async function volumeSet(volume: number) {
+	return axios.post(MPC, data(-2, { volume }), config);
 }
