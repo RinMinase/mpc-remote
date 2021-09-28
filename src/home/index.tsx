@@ -1,4 +1,4 @@
-import { default as React, useEffect, useRef, useState } from "react";
+import { default as React, SyntheticEvent, useEffect, useRef, useState } from "react";
 import { debounce } from "lodash-es";
 import c from "clsx";
 
@@ -27,6 +27,13 @@ export default function Home() {
 		if (interval) clearInterval(interval);
 	};
 
+	const blur = async () => {
+		if (document.activeElement instanceof HTMLElement) {
+			await new Promise(res => setTimeout(res, 75));
+			document.activeElement.blur();
+		}
+	};
+
 	const port = process.env.port || "3000";
 	let interval: NodeJS.Timer;
 
@@ -43,46 +50,57 @@ export default function Home() {
 	};
 
 	const handleReload = async () => {
+		blur();
 		window.location.reload();
 	};
 
 	const handlePrev = async () => {
+		blur();
 		await actions.previousChapter();
 	};
 
 	const handlePrevHold = useLongPress(async () => {
+		blur();
 		await actions.previousFile();
 	});
 
 	const handleNext = async () => {
+		blur();
 		await actions.nextChapter();
 	};
 
 	const handleNextHold = useLongPress(async () => {
+		blur();
 		await actions.nextFile();
 	});
 
 	const handleAudio = async () => {
+		blur();
 		await actions.audio();
 	};
 
 	const handleSubtitle = async () => {
+		blur();
 		await actions.subtitle();
 	};
 
 	const handlePlay = async () => {
+		blur();
 		await actions.play();
 	};
 
 	const handlePause = async () => {
+		blur();
 		await actions.pause();
 	};
 
 	const handleBack = async () => {
+		blur();
 		await actions.backKeyframe();
 	};
 
 	const handleForward = async () => {
+		blur();
 		await actions.fwdKeyframe();
 	};
 
@@ -94,6 +112,7 @@ export default function Home() {
 			setVolumeSlider(currVolume);
 		}
 
+		blur();
 		await actions.volumeUp();
 	};
 
@@ -105,10 +124,12 @@ export default function Home() {
 			setVolumeSlider(currVolume);
 		}
 
+		blur();
 		await actions.volumeDown();
 	};
 
 	const handleVolumeMute = async () => {
+		blur();
 		await actions.volumeMute();
 	};
 
@@ -189,7 +210,7 @@ export default function Home() {
 			<div className={style.midContainer}>
 				<div className={style.audioSubsContainer}>
 					<button
-						className={style.audioSubsButton}
+						className={c(style.button, style.audioSubsButton)}
 						disabled={disabledRemote}
 						onClick={handleAudio}
 					>
@@ -200,7 +221,7 @@ export default function Home() {
 				<div className={style.playButtonContainer}>
 					{playerStatus.status ? (
 						<button
-							className={style.playButton}
+							className={c(style.button, style.playButton)}
 							disabled={disabledRemote}
 							onClick={handlePause}
 						>
@@ -208,7 +229,7 @@ export default function Home() {
 						</button>
 					) : (
 						<button
-							className={style.playButton}
+							className={c(style.button, style.playButton)}
 							disabled={disabledRemote}
 							onClick={handlePlay}
 						>
@@ -219,7 +240,7 @@ export default function Home() {
 
 				<div className={style.audioSubsContainer}>
 					<button
-						className={style.audioSubsButton}
+						className={c(style.button, style.audioSubsButton)}
 						disabled={disabledRemote}
 						onClick={handleSubtitle}
 					>

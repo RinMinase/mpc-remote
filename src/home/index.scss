@@ -1,4 +1,5 @@
 $button-bg: #323232;
+$button-bg-highlight: #585858;
 
 .container {
 	padding: 20px 15px;
@@ -46,7 +47,13 @@ $button-bg: #323232;
 	background-color: $button-bg;
 	color: #c7c7c7;
 	font-size: 16px;
+	cursor: pointer;
 	user-select: none;
+	transition: 0.3s;
+
+	&:focus {
+		background-color: $button-bg-highlight;
+	}
 }
 
 .close {
@@ -87,9 +94,6 @@ $button-bg: #323232;
 	height: 150px;
 	width: 150px;
 	border-radius: 100%;
-	border: 0;
-	background-color: $button-bg;
-	user-select: none;
 }
 
 .playIcon {
@@ -102,13 +106,9 @@ $button-bg: #323232;
 }
 
 .audioSubsButton {
-	height: 48px;
 	width: 48px;
 	padding-top: 3px;
-	border: 0;
 	border-radius: 100%;
-	background-color: $button-bg;
-	user-select: none;
 }
 
 .fwdRwdContainer {
