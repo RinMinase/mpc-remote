@@ -31,6 +31,7 @@ export default function Home() {
 
 	const handleClose = async () => {
 		await actions.close();
+		unmount();
 	};
 
 	const handlePrev = async () => {
