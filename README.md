@@ -12,6 +12,8 @@
 ## Introduction
 A lightweight MPC-HC remote to be opened on the browser on your mobile phone.
 
+![UI Image](https://github.com/RinMinase/mpc-remote/blob/main/.github/UI.png?raw=true)
+
 ## Getting Started
 
 ### Using the project
@@ -57,7 +59,7 @@ Installations Required:
 
 9. Open any video file
 
-10. Open your browser then navigate to `localhost:<port stated on Listen on port>`
+10. Open your browser on your phone then navigate to `localhost:<port stated on Listen on port>`
 
 
 ### Running the project
@@ -140,7 +142,6 @@ Task automation is based on [Yarn scripts](https://yarnpkg.com/lang/en/docs/cli/
 ## Built with
 * <img width=20 height=20 src="https://reactjs.org/favicon.ico"> [React 17](https://reactjs.org/) - Web Framework
 * <img width=20 height=20 src="https://www.typescriptlang.org/favicon-32x32.png"> [TypeScript](https://www.typescriptlang.org/) - Language syntax and compiler
-* <img width=20 height=20 src="https://material-ui.com/static/favicon.ico"> [Material-UI](https://material-ui.com/) - Web Layouting
 * <img width=20 height=20 src="https://sass-lang.com/favicon.ico"> [Sassy CSS (SCSS)](https://sass-lang.com/) - CSS pre-processor
 * <img width=20 height=20 src="https://webpack.js.org/icon_192x192.png"> [Webpack 5](https://webpack.js.org/) - Project bundler
 * <img width=20 height=20 src="https://terser.org/img/terser-square-logo.png"> [Terser](https://terser.org/) - ES6+ (JavaScript) mangler and compression toolkit
