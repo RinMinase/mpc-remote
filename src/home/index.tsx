@@ -4,24 +4,7 @@ import c from "clsx";
 
 import style from "./index.scss";
 
-import {
-	audio,
-	backKeyframe,
-	close,
-	fwdKeyframe,
-	nextChapter,
-	nextFile,
-	pause,
-	play,
-	previousChapter,
-	previousFile,
-	status,
-	subtitle,
-	volumeDown,
-	volumeMute,
-	volumeSet,
-	volumeUp,
-} from "./actions";
+import * as actions from "./actions";
 import useLongPress from "./longpress";
 
 export default function Home() {
@@ -35,7 +18,7 @@ export default function Home() {
 
 	const setSliderDebounced = useRef(
 		debounce(async (value: number) => {
-			await volumeSet(+value);
+			await actions.volumeSet(+value);
 		}, 150)
 	);
 
@@ -47,47 +30,47 @@ export default function Home() {
 	let interval: NodeJS.Timer;
 
 	const handleClose = async () => {
-		await close();
+		await actions.close();
 	};
 
 	const handlePrev = async () => {
-		await previousChapter();
+		await actions.previousChapter();
 	};
 
 	const handlePrevHold = useLongPress(async () => {
-		await previousFile();
+		await actions.previousFile();
 	});
 
 	const handleNext = async () => {
-		await nextChapter();
+		await actions.nextChapter();
 	};
 
 	const handleNextHold = useLongPress(async () => {
-		await nextFile();
+		await actions.nextFile();
 	});
 
 	const handleAudio = async () => {
-		await audio();
+		await actions.audio();
 	};
 
 	const handleSubtitle = async () => {
-		await subtitle();
+		await actions.subtitle();
 	};
 
 	const handlePlay = async () => {
-		await play();
+		await actions.play();
 	};
 
 	const handlePause = async () => {
-		await pause();
+		await actions.pause();
 	};
 
 	const handleBack = async () => {
-		await backKeyframe();
+		await actions.backKeyframe();
 	};
 
 	const handleForward = async () => {
-		await fwdKeyframe();
+		await actions.fwdKeyframe();
 	};
 
 	const handleVolumeUp = async () => {
@@ -98,7 +81,7 @@ export default function Home() {
 			setVolumeSlider(currVolume);
 		}
 
-		await volumeUp();
+		await actions.volumeUp();
 	};
 
 	const handleVolumeDown = async () => {
@@ -109,11 +92,11 @@ export default function Home() {
 			setVolumeSlider(currVolume);
 		}
 
-		await volumeDown();
+		await actions.volumeDown();
 	};
 
 	const handleVolumeMute = async () => {
-		await volumeMute();
+		await actions.volumeMute();
 	};
 
 	const handleVolumeSlider = async ({ target }) => {
@@ -124,7 +107,7 @@ export default function Home() {
 	useEffect(() => {
 		if (window.location.port !== port) {
 			interval = setInterval(async () => {
-				setPlayerStatus(await status());
+				setPlayerStatus(await actions.status());
 			}, 1500);
 		}
 	}, []);

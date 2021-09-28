@@ -130,3 +130,27 @@ export async function volumeMute() {
 export async function volumeSet(volume: number) {
 	return axios.post(MPC, data(-2, { volume }), config);
 }
+
+export default {
+	status,
+	close,
+	play,
+	pause,
+	previousChapter,
+	nextChapter,
+	previousFile,
+	nextFile,
+	audio,
+	subtitle,
+	fwdKeyframe,
+	fwdSmall,
+	fwdMedium,
+	fwdLarge,
+	backKeyframe,
+	backSmall,
+	backMedium,
+	backLarge,
+	volumeUp,
+	volumeDown,
+	volumeSet,
+};
