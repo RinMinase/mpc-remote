@@ -55,6 +55,10 @@ export default function Home() {
 		}
 	}, []);
 
+	useEffect(() => {
+		setVolumeSlider(playerStatus.volume);
+	}, [playerStatus.volume])
+
 	useEffect(() => () => {
 		if (interval) clearInterval(interval);
 	}, [])
