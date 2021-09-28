@@ -20,6 +20,7 @@ Installations Required:
 - Node
 - _(Optional)_ Yarn
 
+Steps:
 1. Fire up your terminal inside the project folder.
 
 2. Build the project by running:
@@ -54,7 +55,12 @@ Installations Required:
 
 7. Open up the options of `MPC-HC` under `View > Options`
 
-8. Navigate to `Web Interface` and check `Listen on port`
+8. Navigate to `Web Interface` and:
+    - check `Listen on port`
+    - uncheck `Allow access from localhost only`
+    - check `Serve pages from:`
+
+    **Note:** Remember the `port number` in `Listen on port`, by default this is `13579`
 
 9. Open any video file
 
