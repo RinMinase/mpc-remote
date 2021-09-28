@@ -17,8 +17,9 @@ A lightweight MPC-HC remote to be opened on the browser on your mobile phone.
 ## Using the project
 
 Installations Required:
-- Node
-- _(Optional)_ Yarn
+- MPC-HC — [https://github.com/clsid2/mpc-hc/releases](https://github.com/clsid2/mpc-hc/releases)
+- Node — [https://nodejs.org/en/](https://nodejs.org/en/)
+- _(Optional)_ Yarn — [https://classic.yarnpkg.com/en/docs/install](https://classic.yarnpkg.com/en/docs/install)
 
 Steps:
 1. Clone the project and install the dependencies
