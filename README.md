@@ -21,23 +21,38 @@ Installations Required:
 - _(Optional)_ Yarn
 
 Steps:
-1. Fire up your terminal inside the project folder.
+1. Clone the project and install the dependencies
 
-2. Build the project by running:
+    ```
+    git clone https://github.com/RinMinase/mpc-remote.git
+    cd mpc-remote
+
+    npm install
+    ```
+
+    **Note:** If you have installed Yarn, run this instead:
+
+    ```
+    yarn install
+    ```
+
+2. Fire up your terminal inside the project folder.
+
+3. Build the project by running:
 
     ```
     npm run build
     ```
 
-    **Note:** If you have installed Yarn, run these instead:
+    **Note:** If you have installed Yarn, run this instead:
 
     ```
     yarn build
     ```
 
-3. This should generate a `/dist` folder inside the project folder.
+4. This should generate a `/dist` folder inside the project folder.
 
-4. Open up your file explorer and navigate to where `MPC-HC` is installed
+5. Open up your file explorer and navigate to where `MPC-HC` is installed
 
     This is typically found on either folders:
 
@@ -49,22 +64,22 @@ Steps:
     C:\Program Files (x86)\MPC-HC
     ```
 
-5. Create a `webroot` folder inside the `MPC-HC` folder
+6. Create a `webroot` folder inside the `MPC-HC` folder
 
-6. Copy contents of the `/dist` folder generated earlier from the build from #3 inside the webroot folder
+7. Copy contents of the `/dist` folder generated earlier from the build from #3 inside the webroot folder
 
-7. Open up the options of `MPC-HC` under `View > Options`
+8. Open up the options of `MPC-HC` under `View > Options`
 
-8. Navigate to `Web Interface` and:
+9. Navigate to `Web Interface` and:
     - [x] **check** `Listen on port`
     - [x] **check** `Serve pages from:`
     - [ ] **un-check** `Allow access from localhost only`
 
     **Note:** Remember the `port number` in `Listen on port`, by default this is `13579`
 
-9. Open any video file
+10. Open any video file
 
-10. Open your browser on your phone then navigate to `localhost:<port stated on Listen on port>`
+11. Open your browser on your phone then navigate to `localhost:<port stated on Listen on port>`
 
 ## Project Development
 
