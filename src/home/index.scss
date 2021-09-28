@@ -41,11 +41,16 @@ $button-bg-highlight: #585858;
 
 .button {
 	height: 48px;
+	width: 150px;
+
 	border: 0;
 	border-radius: 999px;
-	width: 150px;
+	padding-left: 0;
+	padding-right: 0;
+
 	background-color: $button-bg;
 	color: #c7c7c7;
+
 	font-size: 16px;
 	cursor: pointer;
 	user-select: none;
@@ -92,7 +97,6 @@ $button-bg-highlight: #585858;
 
 .playButton {
 	height: 150px;
-	width: 150px;
 	border-radius: 100%;
 }
 
