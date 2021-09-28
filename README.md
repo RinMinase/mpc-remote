@@ -27,6 +27,7 @@ Steps:
     ```
     git clone https://github.com/RinMinase/mpc-remote.git
     cd mpc-remote
+    cp .env.example .env
 
     npm install
     ```
@@ -37,9 +38,17 @@ Steps:
     yarn install
     ```
 
-2. Fire up your terminal inside the project folder.
+2. Open the `.env` file on the project folder root.
 
-3. Build the project by running:
+3. Locate the `Local IP Address` of your machine then place it on `LOCAL_COMPUTER_IP`
+
+    You can do this by running `ipconfig` on your terminal,
+
+    If you are using Ethernet, copy the `IPv4 Address` in `Ethernet adapter`
+
+    If you are using WiFi, copy the `IPv4 Address` in `Wireless LAN adapter`
+
+4. Build the project by running:
 
     ```
     npm run build
@@ -51,7 +60,7 @@ Steps:
     yarn build
     ```
 
-4. This should generate a `/dist` folder inside the project folder.
+    **Note:** This should generate a `/dist` folder inside the project folder.
 
 5. Open up your file explorer and navigate to where `MPC-HC` is installed
 
@@ -77,6 +86,8 @@ Steps:
     - [ ] **un-check** `Allow access from localhost only`
 
     **Note:** Remember the `port number` in `Listen on port`, by default this is `13579`
+
+    **Additional Note:** If the port is set to a different number from `13579`. Open the `.env` file and edit `MPC_PORT`
 
 10. Open any video file
 
