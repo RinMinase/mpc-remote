@@ -93,6 +93,17 @@ Steps:
 
 11. Open the browser on your phone, then navigate to `<computer IP address>:<port stated on Listen on port>`
 
+
+## Environmental Variables Used
+
+| Variable            | Description                                                |
+| ------------------- | ---------------------------------------------------------- |
+| `PORT`              | Port used for the **development server** _(default: 3000)_ |
+| `POLL_RATE`         | Polling rate for remote status _(default: 1500)_           |
+| `MPC_PORT`          | Port used by MPC-HC WebServer _(default: 13579)_           |
+| `LOCAL_COMPUTER_IP` | Local IP Address of your computer ***required**            |
+
+
 ## Project Development
 
 ### Running the project
