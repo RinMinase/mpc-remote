@@ -28,7 +28,7 @@ export async function status() {
 				const fullStatus = data.substring(10, data.length - 1);
 
 				const fnFull = fullStatus.split("\", \"");
-				const filename: string = fnFull[0];
+				const filename: string = fnFull[0] || "— Not Playing —";
 
 				const stFull = fnFull[1].split("\", ");
 				const status: number = stFull[0] === "Playing" ? 1 : 0;
