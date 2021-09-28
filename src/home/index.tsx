@@ -30,6 +30,13 @@ export default function Home() {
 	let interval: NodeJS.Timer;
 
 	const handleClose = async () => {
+		setPlayerStatus({
+			filename: "— Not Playing —",
+			muted: 0,
+			status: 0,
+			volume: 0,
+		});
+
 		await actions.close();
 		unmount();
 	};
@@ -108,7 +115,13 @@ export default function Home() {
 	useEffect(() => {
 		if (window.location.port !== port) {
 			interval = setInterval(async () => {
-				setPlayerStatus(await actions.status());
+				const status = await actions.status();
+
+				if (!status.hasOwnProperty("filename")) {
+					unmount();
+				} else {
+					setPlayerStatus(status);
+				}
 			}, 1500);
 		}
 	}, []);

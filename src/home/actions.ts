@@ -44,7 +44,7 @@ export async function status() {
 					volume,
 				};
 			}
-		});
+		}).catch((err) => err);
 }
 
 export async function close() {
