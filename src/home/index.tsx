@@ -135,6 +135,11 @@ export default function Home() {
 	};
 
 	const handleVolumeMute = async () => {
+		const status = { ...playerStatus };
+
+		status.muted = +!status.muted;
+		setPlayerStatus({...status});
+
 		blur();
 		await actions.volumeMute();
 	};
