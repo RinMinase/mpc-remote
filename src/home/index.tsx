@@ -39,7 +39,8 @@ export default function Home() {
 		}
 	};
 
-	const port = process.env.port || "3000";
+	const pollRate = +process.env.POLL_RATE || 1500;
+	const port = process.env.PORT || "3000";
 	let interval: NodeJS.Timer;
 
 	const handleClose = async () => {
@@ -155,7 +156,7 @@ export default function Home() {
 				} else {
 					setPlayerStatus(status);
 				}
-			}, 1500);
+			}, pollRate);
 		}
 	}, []);
 
