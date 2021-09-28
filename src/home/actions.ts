@@ -47,6 +47,10 @@ export async function status() {
 		});
 }
 
+export async function close() {
+	return axios.post(MPC, data(816), config);
+}
+
 export async function play() {
 	return axios.post(MPC, data(887), config);
 }
