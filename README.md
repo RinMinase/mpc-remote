@@ -14,9 +14,8 @@ A lightweight MPC-HC remote to be opened on the browser on your mobile phone.
 
 ![UI Image](https://github.com/RinMinase/mpc-remote/blob/main/.github/UI.png?raw=true)
 
-## Getting Started
+## Using the project
 
-### Using the project
 Installations Required:
 - Node
 - _(Optional)_ Yarn
@@ -61,6 +60,7 @@ Installations Required:
 
 10. Open your browser on your phone then navigate to `localhost:<port stated on Listen on port>`
 
+## Project Development
 
 ### Running the project
 1. [Download](https://nodejs.org/en/) the latest Node version. This is marked as `<version number> Current`. Install it on your machine.
