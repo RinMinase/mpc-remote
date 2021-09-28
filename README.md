@@ -70,7 +70,7 @@ Steps:
 
 8. Open up the options of `MPC-HC` under `View > Options`
 
-9. Navigate to `Web Interface` and:
+9. Navigate to `Player > Web Interface` and:
     - [x] **check** `Listen on port`
     - [x] **check** `Serve pages from:`
     - [ ] **un-check** `Allow access from localhost only`
@@ -79,7 +79,7 @@ Steps:
 
 10. Open any video file
 
-11. Open your browser on your phone then navigate to `localhost:<port stated on Listen on port>`
+11. Open the browser on your phone, then navigate to `<computer IP address>:<port stated on Listen on port>`
 
 ## Project Development
 
