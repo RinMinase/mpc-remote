@@ -9,8 +9,8 @@ const MPC_STATUS = `http://${MPC_DOMAIN}:${MPC_PORT}/status.html`;
 const config = {
 	headers: {
 		"Content-Type": "application/x-www-form-urlencoded",
-	}
-}
+	},
+};
 
 const data = (wm_command: number, param?: object) => {
 	return qs.stringify({
@@ -21,30 +21,33 @@ const data = (wm_command: number, param?: object) => {
 };
 
 export async function status() {
-	return axios.get(MPC_STATUS, config)
-		.then((response) => {
-			if (response.status === 200) {
-				const { data } = response;
-				const fullStatus = data.substring(10, data.length - 1);
+	try {
+		const response = await axios.get(MPC_STATUS, config);
 
-				const fnFull = fullStatus.split("\", \"");
-				const filename: string = fnFull[0] || "— Not Playing —";
+		if (response.status === 200) {
+			const { data } = response;
+			const fullStatus = data.substring(10, data.length - 1);
 
-				const stFull = fnFull[1].split("\", ");
-				const status: number = stFull[0] === "Playing" ? 1 : 0;
+			const fnFull = fullStatus.split('", "');
+			const filename: string = fnFull[0] || "— Not Playing —";
 
-				const volFull = stFull[3].split(", ");
-				const muted: number = +volFull[0];
-				const volume: number = +volFull[1];
+			const stFull = fnFull[1].split('", ');
+			const status: number = stFull[0] === "Playing" ? 1 : 0;
 
-				return {
-					filename,
-					muted,
-					status,
-					volume,
-				};
-			}
-		}).catch((err) => err);
+			const volFull = stFull[3].split(", ");
+			const muted: number = +volFull[0];
+			const volume: number = +volFull[1];
+
+			return {
+				filename,
+				muted,
+				status,
+				volume,
+			};
+		}
+	} catch (err) {
+		throw new Error(err);
+	}
 }
 
 export async function close() {

@@ -164,12 +164,12 @@ export default function Home() {
 			setDisabledRemote(false);
 
 			interval = setInterval(async () => {
-				const status = await actions.status();
+				try {
+					const status = await actions.status();
 
-				if (!status.hasOwnProperty("filename")) {
-					disableRemote();
-				} else {
 					setPlayerStatus(status);
+				} catch {
+					disableRemote();
 				}
 			}, pollRate);
 		}
