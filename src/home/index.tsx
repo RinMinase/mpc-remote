@@ -308,13 +308,14 @@ export default function Home() {
 					className={c(
 						style.button,
 						style.volumeButton,
-						style.volumeButtonMute
+						style.volumeButtonMute,
+						playerStatus.muted ? style.volumeMuteButtonMuted : "",
 					)}
 					disabled={disabledRemote}
 					onClick={handleVolumeMute}
 				>
 					{playerStatus.muted ? (
-						<i className="material-icons">volume_off</i>
+						<i className={"material-icons " + style.volumeMuteIconMuted}>volume_off</i>
 					) : (
 						<i className="material-icons">volume_up</i>
 					)}
