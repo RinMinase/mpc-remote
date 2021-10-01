@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.5",
-    "@types/node": "^16.10.1",
+    "@types/node": "^16.10.2",
     "@types/react": "^17.0.26",
     "@types/webpack-dev-server": "^4.1.0",
     "@types/wicg-mediasession": "^1.1.3",
