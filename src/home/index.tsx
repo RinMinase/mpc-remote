@@ -194,7 +194,9 @@ export default function Home() {
 	return (
 		<div className={style.container}>
 			<div className={style.headerContainer}>
-				<p className={style.header}>{playerStatus.filename}</p>
+				<div className={style.headerSubContainer}>
+					<p className={style.header}>{playerStatus.filename}</p>
+				</div>
 			</div>
 
 			<div className={style.close}>
