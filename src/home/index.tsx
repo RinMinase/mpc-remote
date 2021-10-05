@@ -200,17 +200,17 @@ export default function Home() {
 			<div className={style.close}>
 				{disabledRemote ? (
 					<button
-						className={c(style.button, style.reloadButton)}
+						className={c(style.button, style.closeReloadButton, style.reloadButton)}
 						onClick={handleReload}
 					>
-						RELOAD
+						<i className={`material-icons ${style.closeReloadIcon}`}>sync</i>
 					</button>
 				) : (
 					<button
-						className={c(style.button, style.closeButton)}
+						className={c(style.button, style.closeReloadButton, style.closeButton)}
 						onClick={handleClose}
 					>
-						CLOSE
+						<i className={`material-icons ${style.closeReloadIcon}`}>power_settings_new</i>
 					</button>
 				)}
 			</div>

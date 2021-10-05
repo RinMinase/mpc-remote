@@ -73,14 +73,21 @@ $button-bg-highlight: #585858;
 	}
 }
 
+.closeReloadIcon {
+	color: #fff;
+	padding-top: 3px;
+}
+
+.closeReloadButton {
+	width: 100px;
+}
+
 .closeButton {
 	background-color: #ef4b56;
-	color: #e3e3e3;
 }
 
 .reloadButton {
 	background-color: #27bb65;
-	color: #e3e3e3;
 }
 
 .midContainer {
