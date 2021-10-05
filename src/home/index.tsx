@@ -115,10 +115,20 @@ export default function Home() {
 		await actions.backKeyframe();
 	};
 
+	const handleBackHold = useLongPress(async () => {
+		blur();
+		await actions.backLarge();
+	});
+
 	const handleForward = async () => {
 		blur();
 		await actions.fwdKeyframe();
 	};
+
+	const handleForwardHold = useLongPress(async () => {
+		blur();
+		await actions.fwdLarge();
+	});
 
 	const handleVolumeUp = async () => {
 		if (volumeSlider !== 100) {
@@ -274,6 +284,7 @@ export default function Home() {
 					className={style.button}
 					disabled={disabledRemote}
 					onClick={handleBack}
+					{...handleBackHold}
 				>
 					<i className="material-icons">fast_rewind</i>
 				</button>
@@ -284,6 +295,7 @@ export default function Home() {
 					className={style.button}
 					disabled={disabledRemote}
 					onClick={handleForward}
+					{...handleForwardHold}
 				>
 					<i className="material-icons">fast_forward</i>
 				</button>
