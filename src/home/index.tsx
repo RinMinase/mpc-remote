@@ -94,7 +94,7 @@ export default function Home() {
 		const status = { ...playerStatus };
 
 		status.status = +!status.status;
-		setPlayerStatus({...status});
+		setPlayerStatus({ ...status });
 
 		blur();
 		await actions.play();
@@ -104,7 +104,7 @@ export default function Home() {
 		const status = { ...playerStatus };
 
 		status.status = +!status.status;
-		setPlayerStatus({...status});
+		setPlayerStatus({ ...status });
 
 		blur();
 		await actions.pause();
@@ -158,7 +158,7 @@ export default function Home() {
 		const status = { ...playerStatus };
 
 		status.muted = +!status.muted;
-		setPlayerStatus({...status});
+		setPlayerStatus({ ...status });
 
 		blur();
 		await actions.volumeMute();
@@ -200,17 +200,41 @@ export default function Home() {
 			<div className={style.close}>
 				{disabledRemote ? (
 					<button
-						className={c(style.button, style.closeReloadButton, style.reloadButton)}
+						className={c(
+							style.button,
+							style.closeReloadButton,
+							style.reloadButton
+						)}
 						onClick={handleReload}
 					>
-						<i className={`material-icons ${style.closeReloadIcon}`}>sync</i>
+						<i
+							className={c(
+								"material-icons",
+								style.iconTopSpace,
+								style.closeReloadIcon
+							)}
+						>
+							sync
+						</i>
 					</button>
 				) : (
 					<button
-						className={c(style.button, style.closeReloadButton, style.closeButton)}
+						className={c(
+							style.button,
+							style.closeReloadButton,
+							style.closeButton
+						)}
 						onClick={handleClose}
 					>
-						<i className={`material-icons ${style.closeReloadIcon}`}>power_settings_new</i>
+						<i
+							className={c(
+								"material-icons",
+								style.iconTopSpace,
+								style.closeReloadIcon
+							)}
+						>
+							power_settings_new
+						</i>
 					</button>
 				)}
 			</div>
@@ -222,7 +246,7 @@ export default function Home() {
 					onClick={handlePrev}
 					{...handlePrevHold}
 				>
-					<i className="material-icons">undo</i>
+					<i className={`material-icons ${style.iconTopSpace}`}>undo</i>
 				</button>
 			</div>
 
@@ -233,7 +257,7 @@ export default function Home() {
 					onClick={handleNext}
 					{...handleNextHold}
 				>
-					<i className="material-icons">redo</i>
+					<i className={`material-icons ${style.iconTopSpace}`}>redo</i>
 				</button>
 			</div>
 
@@ -255,7 +279,7 @@ export default function Home() {
 							disabled={disabledRemote}
 							onClick={handlePause}
 						>
-							<i className={"material-icons " + style.playIcon}>pause</i>
+							<i className={c("material-icons", style.playIcon)}>pause</i>
 						</button>
 					) : (
 						<button
@@ -263,7 +287,7 @@ export default function Home() {
 							disabled={disabledRemote}
 							onClick={handlePlay}
 						>
-							<i className={"material-icons " + style.playIcon}>play_arrow</i>
+							<i className={c("material-icons", style.playIcon)}>play_arrow</i>
 						</button>
 					)}
 				</div>
@@ -286,7 +310,7 @@ export default function Home() {
 					onClick={handleBack}
 					{...handleBackHold}
 				>
-					<i className="material-icons">fast_rewind</i>
+					<i className={c("material-icons", style.iconTopSpace)}>fast_rewind</i>
 				</button>
 			</div>
 
@@ -297,7 +321,9 @@ export default function Home() {
 					onClick={handleForward}
 					{...handleForwardHold}
 				>
-					<i className="material-icons">fast_forward</i>
+					<i className={c("material-icons", style.iconTopSpace)}>
+						fast_forward
+					</i>
 				</button>
 			</div>
 
@@ -321,13 +347,15 @@ export default function Home() {
 						style.button,
 						style.volumeButton,
 						style.volumeButtonMute,
-						playerStatus.muted ? style.volumeMuteButtonMuted : "",
+						playerStatus.muted ? style.volumeMuteButtonMuted : ""
 					)}
 					disabled={disabledRemote}
 					onClick={handleVolumeMute}
 				>
 					{playerStatus.muted ? (
-						<i className={"material-icons " + style.volumeMuteIconMuted}>volume_off</i>
+						<i className={c("material-icons", style.volumeMuteIconMuted)}>
+							volume_off
+						</i>
 					) : (
 						<i className="material-icons">volume_up</i>
 					)}

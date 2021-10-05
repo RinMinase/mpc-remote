@@ -9,6 +9,10 @@ $button-bg-highlight: #585858;
 	overflow: hidden;
 }
 
+.iconTopSpace {
+	padding-top: 2px;
+}
+
 .headerContainer {
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -75,7 +79,6 @@ $button-bg-highlight: #585858;
 
 .closeReloadIcon {
 	color: #fff;
-	padding-top: 3px;
 }
 
 .closeReloadButton {
