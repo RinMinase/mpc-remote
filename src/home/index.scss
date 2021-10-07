@@ -19,6 +19,10 @@ $button-bg-highlight: #585858;
 	margin-bottom: 30px;
 	padding-left: 12px;
 	padding-right: 12px;
+
+	@media screen and (max-height: 630px) {
+		display: none
+	}
 }
 
 .headerSubContainer {
@@ -29,10 +33,6 @@ $button-bg-highlight: #585858;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
-
-	@media screen and (max-height: 630px) {
-		display: none
-	}
 }
 
 .header {
