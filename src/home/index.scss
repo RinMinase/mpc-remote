@@ -67,6 +67,7 @@ $button-bg-highlight: #585858;
 	font-size: 16px;
 	cursor: pointer;
 	user-select: none;
+	-webkit-user-select: none;
 	transition: 0.3s;
 
 	&:focus {
