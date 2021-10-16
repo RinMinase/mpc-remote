@@ -71,11 +71,11 @@ export async function nextChapter() {
 }
 
 export async function previousFile() {
-	return axios.post(MPC, data(920), config);
+	return axios.post(MPC, data(919), config);
 }
 
 export async function nextFile() {
-	return axios.post(MPC, data(919), config);
+	return axios.post(MPC, data(920), config);
 }
 
 export async function audio() {
