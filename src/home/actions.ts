@@ -22,7 +22,7 @@ const data = (wm_command: number, param?: object) => {
 
 export async function status() {
 	try {
-		const response = await axios.get(MPC_STATUS, config);
+		const response = await axios.get<string>(MPC_STATUS, config);
 
 		if (response.status === 200) {
 			const { data } = response;
