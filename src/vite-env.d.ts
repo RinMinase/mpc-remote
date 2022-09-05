@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+import JSX = preact.JSX
+
 interface ImportMetaEnv {
 	readonly VITE_PORT: string;
 	readonly VITE_POLL_RATE: string;
