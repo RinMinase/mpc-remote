@@ -1,7 +1,7 @@
-import { render } from 'preact'
-import App from './home'
+import { render } from "preact";
+import App from "./home";
 
 import "material-design-icons/iconfont/material-icons.css";
-import './global.scss'
+import "./global.scss";
 
-render(<App />, document.getElementById('app') as HTMLElement)
+render(<App />, document.getElementById("app") as HTMLElement);

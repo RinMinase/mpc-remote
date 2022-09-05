@@ -1,7 +1,6 @@
 import axios from "axios";
 import qs from "qs";
 
-
 const MPC_DOMAIN = import.meta.env.VITE_LOCAL_COMPUTER_IP || "localhost";
 const MPC_PORT = import.meta.env.VITE_MPC_PORT || "13579";
 const MPC = `http://${MPC_DOMAIN}:${MPC_PORT}/command.html`;
