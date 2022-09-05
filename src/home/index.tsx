@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import { debounce } from "lodash-es";
+import debounce from "lodash.debounce";
 
 import * as actions from "./actions";
 import useLongPress from "./longpress";
