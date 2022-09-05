@@ -1,14 +1,5 @@
 <h1 align="center"> MPC-HC Remote </h1>
 
-<p align="center">
-    <a href="https://david-dm.org/RinMinase/mpc-remote">
-        <img alt="David-DM" src="https://img.shields.io/david/RinMinase/mpc-remote?style=for-the-badge">
-    </a>
-    <a href="https://david-dm.org/RinMinase/mpc-remote">
-        <img alt="David-DM" src="https://img.shields.io/david/dev/RinMinase/mpc-remote?label=dev%20dependencies&style=for-the-badge">
-    </a>
-</p>
-
 ## Introduction
 A lightweight MPC-HC remote to be opened on the browser on your mobile phone.
 
@@ -22,7 +13,7 @@ Installations Required:
 - _(Optional)_ Yarn — [https://classic.yarnpkg.com/en/docs/install](https://classic.yarnpkg.com/en/docs/install)
 
 Steps:
-1. Clone the project and install the dependencies
+1. Clone the project, duplicate the ENV file and install the dependencies
 
     ```
     git clone https://github.com/RinMinase/mpc-remote.git
@@ -109,13 +100,14 @@ Steps:
 ### Running the project
 1. [Download](https://nodejs.org/en/) the latest Node version. This is marked as `<version number> Current`. Install it on your machine.
 
-2. _(Optional)_ [Download](https://yarnpkg.com/latest.msi) Yarn. This is a faster package manager than the default `npm` one.
+2. _(Optional)_ [Download](https://yarnpkg.com) Yarn. This is a faster package manager than the default `npm` one.
 
-3. Clone the project
+3. Clone the project and duplicate the ENV file
 
     ```
     git clone https://github.com/RinMinase/mpc-remote.git
     cd mpc-remote
+    cp .env.example .env
     ```
 
 4. Install the dependencies then run the project
@@ -137,18 +129,19 @@ Steps:
 
 ### Project Structure
     .
-    ├── assets/                         # Project assets
+    ├── public/                         # Project public assets
     ├── src/                            # Project source code
     │   ├── home/
     │   │   ├── actions.ts              # Main component http actions
     │   │   ├── index.scss              # Main component stylesheet
     │   │   └── index.tsx               # Main component
-    │   ├── global.d.ts                 # Project type definitions
     │   ├── global.scss                 # Main stylesheet
-    │   ├── index.html                  # Main template file
-    │   └── index.tsx                   # Main scripts
+    │   ├── main.tsx                    # Main scripts
+    │   └── vite-env.d.ts               # Project type definitions
+    ├── index.html                      # Main template file
     ├── tsconfig.json                   # TypeScript configuration file
-    └── webpack.config.ts               # Webpack configuration file
+    ├── tsconfig.node.json              # Vite typescript configuration file
+    └── vite.config.ts                  # Vite configuration file
 
 
 ### Building the project
@@ -177,15 +170,14 @@ Installations Required:
 
 Task automation is based on [Yarn scripts](https://yarnpkg.com/lang/en/docs/cli/run/) or [NPM scripts](https://docs.npmjs.com/misc/scripts).
 
-| Task                | Description                                                                            |
-| ------------------- | -------------------------------------------------------------------------------------- |
-| `yarn start`        | Run **development server** on `http://localhost:3000/` with file watching on changes   |
-| `yarn build`        | Build production code                                                                  |
+| Task         | Description                                            |
+| ------------ | ------------------------------------------------------ |
+| `yarn dev`   | Run **development server** on `http://localhost:3000/` |
+| `yarn build` | Build production code                                  |
 
 
 ## Built with
-* <img width=20 height=20 src="https://reactjs.org/favicon.ico"> [React 17](https://reactjs.org/) - Web Framework
-* <img width=20 height=20 src="https://www.typescriptlang.org/favicon-32x32.png"> [TypeScript](https://www.typescriptlang.org/) - Language syntax and compiler
+* <img width=20 height=20 src="https://preactjs.com/favicon.ico"> [Preact](https://preactjs.com/) - Web Framework
+* <img width=20 height=20 src="https://www.typescriptlang.org/favicon-32x32.png"> [TypeScript](https://www.typescriptlang.org/) - Language syntax
+* <img width=20 height=20 src="https://vitejs.dev/logo.svg"> [Vite](https://vitejs.dev/) - Source Code Bundler
 * <img width=20 height=20 src="https://sass-lang.com/favicon.ico"> [Sassy CSS (SCSS)](https://sass-lang.com/) - CSS pre-processor
-* <img width=20 height=20 src="https://webpack.js.org/icon_192x192.png"> [Webpack 5](https://webpack.js.org/) - Project bundler
-* <img width=20 height=20 src="https://terser.org/img/terser-square-logo.png"> [Terser](https://terser.org/) - ES6+ (JavaScript) mangler and compression toolkit
