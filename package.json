@@ -34,7 +34,7 @@
     "dotenv-webpack": "^8.0.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
-    "sass-loader": "^12.2.0",
+    "sass-loader": "^13.0.2",
     "source-map-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.6",
     "ts-loader": "^9.3.1",
