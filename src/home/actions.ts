@@ -1,8 +1,9 @@
 import axios from "axios";
 import qs from "qs";
 
-const MPC_DOMAIN = process.env.LOCAL_COMPUTER_IP || "localhost";
-const MPC_PORT = process.env.MPC_PORT || "13579";
+
+const MPC_DOMAIN = import.meta.env.VITE_LOCAL_COMPUTER_IP || "localhost";
+const MPC_PORT = import.meta.env.VITE_MPC_PORT || "13579";
 const MPC = `http://${MPC_DOMAIN}:${MPC_PORT}/command.html`;
 const MPC_STATUS = `http://${MPC_DOMAIN}:${MPC_PORT}/status.html`;
 
@@ -46,7 +47,7 @@ export async function status() {
 			};
 		}
 	} catch (err) {
-		throw new Error(err);
+		console.error(err);
 	}
 }
 

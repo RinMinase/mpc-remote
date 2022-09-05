@@ -1,11 +1,10 @@
-import { default as React, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { debounce } from "lodash-es";
-import c from "clsx";
-
-import style from "./index.scss";
 
 import * as actions from "./actions";
 import useLongPress from "./longpress";
+
+import "./index.scss"
 
 export default function Home() {
 	const [disabledRemote, setDisabledRemote] = useState(true);
@@ -39,8 +38,8 @@ export default function Home() {
 		}
 	};
 
-	const pollRate = +process.env.POLL_RATE || 1500;
-	const port = process.env.PORT || "3000";
+	const pollRate = +import.meta.env.VITE_POLL_RATE || 1500;
+	const port = import.meta.env.VITE_PORT || "3000";
 	let interval: NodeJS.Timer;
 
 	const handleClose = async () => {
@@ -164,9 +163,12 @@ export default function Home() {
 		await actions.volumeMute();
 	};
 
-	const handleVolumeSlider = async ({ target }) => {
-		setVolumeSlider(target.value);
-		setSliderDebounced.current(target.value);
+	const handleVolumeSlider = async (e: any) => {
+		const target = e.target as HTMLInputElement;
+		const value = target.value;
+
+		setVolumeSlider(+value);
+		setSliderDebounced.current(+value);
 	};
 
 	useEffect(() => {
@@ -177,7 +179,9 @@ export default function Home() {
 				try {
 					const status = await actions.status();
 
-					setPlayerStatus(status);
+					if (status) {
+						setPlayerStatus(status);
+					}
 				} catch {
 					disableRemote();
 				}
@@ -192,193 +196,156 @@ export default function Home() {
 	useEffect(() => disablePoll, []);
 
 	return (
-		<div className={style.container}>
-			<div className={style.headerContainer}>
-				<div className={style.headerSubContainer}>
-					<p className={style.header}>{playerStatus.filename}</p>
+		<div class="container">
+			<div class="headerContainer">
+				<div class="headerSubContainer">
+					<p class="header">{playerStatus.filename}</p>
 				</div>
 			</div>
 
-			<div className={style.close}>
+			<div class="close">
 				{disabledRemote ? (
 					<button
-						className={c(
-							style.button,
-							style.closeReloadButton,
-							style.reloadButton
-						)}
+						class="button closeReloadButton reloadButton"
 						onClick={handleReload}
 					>
-						<i
-							className={c(
-								"material-icons",
-								style.iconTopSpace,
-								style.closeReloadIcon
-							)}
-						>
-							sync
-						</i>
+						<i class="material-icons iconTopSpace closeReloadButton">sync</i>
 					</button>
 				) : (
 					<button
-						className={c(
-							style.button,
-							style.closeReloadButton,
-							style.closeButton
-						)}
+						class="button closeReloadButton closeButton"
 						onClick={handleClose}
 					>
-						<i
-							className={c(
-								"material-icons",
-								style.iconTopSpace,
-								style.closeReloadIcon
-							)}
-						>
+						<i class="material-icons iconTopSpace closeReloadButton">
 							power_settings_new
 						</i>
 					</button>
 				)}
 			</div>
 
-			<div className={style.col6}>
+			<div class="col6">
 				<button
-					className={style.button}
+					class="button"
 					disabled={disabledRemote}
 					onClick={handlePrev}
 					{...handlePrevHold}
 				>
-					<i className={`material-icons ${style.iconTopSpace}`}>undo</i>
+					<i class="material-icons iconTopSpace">undo</i>
 				</button>
 			</div>
 
-			<div className={style.col6}>
+			<div class="col6">
 				<button
-					className={style.button}
+					class="button"
 					disabled={disabledRemote}
 					onClick={handleNext}
 					{...handleNextHold}
 				>
-					<i className={`material-icons ${style.iconTopSpace}`}>redo</i>
+					<i class="material-icons iconTopSpace">redo</i>
 				</button>
 			</div>
 
-			<div className={style.midContainer}>
-				<div className={style.audioSubsContainer}>
+			<div class="midContainer">
+				<div class="audioSubsContainer">
 					<button
-						className={c(style.button, style.audioSubsButton)}
+						class="button audioSubsButton"
 						disabled={disabledRemote}
 						onClick={handleAudio}
 					>
-						<i className="material-icons">audiotrack</i>
+						<i class="material-icons">audiotrack</i>
 					</button>
 				</div>
 
-				<div className={style.playButtonContainer}>
+				<div class="playButtonContainer">
 					{playerStatus.status ? (
 						<button
-							className={c(style.button, style.playButton)}
+							class="button playButton"
 							disabled={disabledRemote}
 							onClick={handlePause}
 						>
-							<i className={c("material-icons", style.playIcon)}>pause</i>
+							<i class="material-icons playIcon">pause</i>
 						</button>
 					) : (
 						<button
-							className={c(style.button, style.playButton)}
+							class="button playButton"
 							disabled={disabledRemote}
 							onClick={handlePlay}
 						>
-							<i className={c("material-icons", style.playIcon)}>play_arrow</i>
+							<i class="material-icons playIcon">play_arrow</i>
 						</button>
 					)}
 				</div>
 
-				<div className={style.audioSubsContainer}>
+				<div class="audioSubsContainer">
 					<button
-						className={c(style.button, style.audioSubsButton)}
+						class="button audioSubsButton"
 						disabled={disabledRemote}
 						onClick={handleSubtitle}
 					>
-						<i className="material-icons">closed_caption</i>
+						<i class="material-icons">closed_caption</i>
 					</button>
 				</div>
 			</div>
 
-			<div className={c(style.col6, style.fwdRwdContainer)}>
+			<div class="col6 fwdRwdContainer">
 				<button
-					className={style.button}
+					class="button"
 					disabled={disabledRemote}
 					onClick={handleBack}
 					{...handleBackHold}
 				>
-					<i className={c("material-icons", style.iconTopSpace)}>fast_rewind</i>
+					<i class="material-icons iconTopSpace">fast_rewind</i>
 				</button>
 			</div>
 
-			<div className={c(style.col6, style.fwdRwdContainer)}>
+			<div class="col6 fwdRwdContainer">
 				<button
-					className={style.button}
+					class="button"
 					disabled={disabledRemote}
 					onClick={handleForward}
 					{...handleForwardHold}
 				>
-					<i className={c("material-icons", style.iconTopSpace)}>
-						fast_forward
-					</i>
+					<i class="material-icons iconTopSpace">fast_forward</i>
 				</button>
 			</div>
 
-			<div className={c(style.col4, style.volumeBtnContainer)}>
+			<div class="col4 volumeBtnContainer">
 				<button
-					className={c(
-						style.button,
-						style.volumeButton,
-						style.volumeButtonMinus
-					)}
+					class="button volumeButton volumeButtonMinus"
 					disabled={disabledRemote}
 					onClick={handleVolumeDown}
 				>
-					<i className="material-icons">remove</i>
+					<i class="material-icons">remove</i>
 				</button>
 			</div>
 
-			<div className={c(style.col4, style.volumeBtnContainer)}>
+			<div class="col4 volumeBtnContainer">
 				<button
-					className={c(
-						style.button,
-						style.volumeButton,
-						style.volumeButtonMute,
-						playerStatus.muted ? style.volumeMuteButtonMuted : ""
-					)}
+					class={`button volumeButton volumeButtonMute ${
+						playerStatus.muted ? "volumeMuteButtonMuted" : ""
+					}`}
 					disabled={disabledRemote}
 					onClick={handleVolumeMute}
 				>
 					{playerStatus.muted ? (
-						<i className={c("material-icons", style.volumeMuteIconMuted)}>
-							volume_off
-						</i>
+						<i class="material-icons volumeMuteIconMuted">volume_off</i>
 					) : (
-						<i className="material-icons">volume_up</i>
+						<i class="material-icons">volume_up</i>
 					)}
 				</button>
 			</div>
 
-			<div className={c(style.col4, style.volumeBtnContainer)}>
+			<div class="col4 volumeBtnContainer">
 				<button
-					className={c(
-						style.button,
-						style.volumeButton,
-						style.volumeButtonPlus
-					)}
+					class="button volumeButton volumeButtonPlus"
 					disabled={disabledRemote}
 					onClick={handleVolumeUp}
 				>
-					<i className="material-icons">add</i>
+					<i class="material-icons">add</i>
 				</button>
 			</div>
 
-			<div className={style.volumeSliderContainer}>
+			<div class="volumeSliderContainer">
 				<input
 					type="range"
 					min="0"
@@ -386,7 +353,7 @@ export default function Home() {
 					name="volume"
 					disabled={disabledRemote}
 					value={volumeSlider}
-					className={style.volumeSlider}
+					class="volumeSlider"
 					onChange={handleVolumeSlider}
 				/>
 			</div>
