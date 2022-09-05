@@ -14,18 +14,18 @@
     "deploy": "webpack --mode production"
   },
   "dependencies": {
-    "axios": "^0.23.0",
-    "clsx": "^1.1.1",
+    "axios": "^0.27.2",
+    "clsx": "^1.2.1",
     "lodash-es": "^4.17.21",
     "material-design-icons": "^3.0.1",
     "node-sass": "^6.0.1",
-    "qs": "^6.10.1",
+    "qs": "^6.11.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@types/dotenv-webpack": "^7.0.3",
-    "@types/lodash-es": "^4.17.5",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.7.14",
     "@types/react": "^17.0.30",
     "@types/wicg-mediasession": "^1.1.3",
