@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "preact/hooks";
 
 export default function useLongPress(callback = () => {}, ms = 500) {
 	const [startLongPress, setStartLongPress] = useState(false);
@@ -9,6 +9,7 @@ export default function useLongPress(callback = () => {}, ms = 500) {
 		if (startLongPress) {
 			timerId = setTimeout(callback, ms);
 		} else {
+			// @ts-expect-error
 			clearTimeout(timerId);
 		}
 
