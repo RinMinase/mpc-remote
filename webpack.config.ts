@@ -1,5 +1,6 @@
 import path from "path";
 import { Configuration } from "webpack";
+import "webpack-dev-server";
 
 import Dotenv from "dotenv-webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
