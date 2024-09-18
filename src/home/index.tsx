@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import debounce from "lodash.debounce";
+import debounce from "./debounce";
 
 import * as actions from "./actions";
 import useLongPress from "./longpress";
@@ -351,7 +351,7 @@ export default function Home() {
 					min="0"
 					max="100"
 					name="volume"
-					disabled={disabledRemote}
+					// disabled={disabledRemote}
 					value={volumeSlider}
 					class="volumeSlider"
 					onChange={handleVolumeSlider}
