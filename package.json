@@ -10,7 +10,7 @@
     "url": "https://github.com/RinMinase/mpc-remote"
   },
   "scripts": {
-    "dev": "vite --port 3000",
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
