@@ -133,9 +133,9 @@ Steps:
     ├── src/                            # Project source code
     │   ├── home/
     │   │   ├── actions.ts              # Main component http actions
-    │   │   ├── index.scss              # Main component stylesheet
+    │   │   ├── index.css               # Main component stylesheet
     │   │   └── index.tsx               # Main component
-    │   ├── global.scss                 # Main stylesheet
+    │   ├── global.css                  # Main stylesheet
     │   ├── main.tsx                    # Main scripts
     │   └── vite-env.d.ts               # Project type definitions
     ├── index.html                      # Main template file
@@ -180,4 +180,3 @@ Task automation is based on [Yarn scripts](https://yarnpkg.com/lang/en/docs/cli/
 * <img width=20 height=20 src="https://preactjs.com/favicon.ico"> [Preact](https://preactjs.com/) - Web Framework
 * <img width=20 height=20 src="https://www.typescriptlang.org/favicon-32x32.png"> [TypeScript](https://www.typescriptlang.org/) - Language syntax
 * <img width=20 height=20 src="https://vitejs.dev/logo.svg"> [Vite](https://vitejs.dev/) - Source Code Bundler
-* <img width=20 height=20 src="https://sass-lang.com/favicon.ico"> [Sassy CSS (SCSS)](https://sass-lang.com/) - CSS pre-processor
