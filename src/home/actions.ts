@@ -1,5 +1,4 @@
 import axios from "axios";
-import qs from "qs";
 
 const MPC_DOMAIN = import.meta.env.VITE_LOCAL_COMPUTER_IP || "localhost";
 const MPC_PORT = import.meta.env.VITE_MPC_PORT || "13579";
@@ -13,11 +12,13 @@ const config = {
 };
 
 const data = (wm_command: number, param?: object) => {
-	return qs.stringify({
+	const searchParams: any = {
 		wm_command,
 		null: 0,
 		...param,
-	});
+	};
+
+	return new URLSearchParams(searchParams).toString();
 };
 
 export async function status() {
