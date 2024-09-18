@@ -4,7 +4,7 @@ import debounce from "lodash.debounce";
 import * as actions from "./actions";
 import useLongPress from "./longpress";
 
-import "./index.scss";
+import "./index.css";
 
 export default function Home() {
 	const [disabledRemote, setDisabledRemote] = useState(true);

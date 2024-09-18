@@ -1,5 +1,7 @@
-$button-bg: #323232;
-$button-bg-highlight: #585858;
+:root {
+	--button-bg: #323232;
+	--button-bg-highlight: #585858;
+}
 
 .container {
 	padding: 20px 15px;
@@ -62,7 +64,7 @@ $button-bg-highlight: #585858;
 	padding-left: 0;
 	padding-right: 0;
 
-	background-color: $button-bg;
+	background-color: var(--button-bg);
 	color: #c7c7c7;
 
 	font-size: 16px;
@@ -71,13 +73,14 @@ $button-bg-highlight: #585858;
 	-webkit-user-select: none;
 	transition: 0.3s;
 
-	&:focus {
-		background-color: $button-bg-highlight;
-	}
+}
 
-	&:active {
-		background-color: $button-bg-highlight;
-	}
+.button:focus {
+	background-color: var(--button-bg-highlight);
+}
+
+.button:active {
+	background-color: var(--button-bg-highlight);
 }
 
 .close {
@@ -190,22 +193,22 @@ $button-bg-highlight: #585858;
 	opacity: 0.7;
 	-webkit-transition: 0.2s;
 	transition: opacity 0.2s;
+}
 
-	&::-webkit-slider-thumb {
-		-webkit-appearance: none;
-		appearance: none;
-		width: 25px;
-		height: 25px;
-		border-radius: 50%;
-		background: #fff;
-		cursor: pointer;
-	}
+.volumeSlider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: #fff;
+	cursor: pointer;
+}
 
-	&::-moz-range-thumb {
-		width: 25px;
-		height: 25px;
-		border-radius: 50%;
-		background: #fff;
-		cursor: pointer;
-	}
+.volumeSlider::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background: #fff;
+	cursor: pointer;
 }
