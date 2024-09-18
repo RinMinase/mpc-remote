@@ -40,7 +40,7 @@ export default function Home() {
 
 	const pollRate = +import.meta.env.VITE_POLL_RATE || 1500;
 	const port = import.meta.env.VITE_PORT || "3000";
-	let interval: NodeJS.Timer;
+	let interval: NodeJS.Timeout;
 
 	const handleClose = async () => {
 		setPlayerStatus({
