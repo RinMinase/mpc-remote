@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
-    "lodash.debounce": "^4.0.8",
     "material-design-icons": "^3.0.1",
     "preact": "^10.24.0",
     "qs": "^6.13.0"
@@ -24,7 +23,6 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@preact/preset-vite": "^2.9.1",
-    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^22.5.5",
     "@types/qs": "^6.9.16",
     "typescript": "^5.6.2",
