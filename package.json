@@ -27,7 +27,6 @@
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^22.5.5",
     "@types/qs": "^6.9.16",
-    "sass": "^1.79.1",
     "typescript": "^5.6.2",
     "vite": "^5.4.6"
   }
