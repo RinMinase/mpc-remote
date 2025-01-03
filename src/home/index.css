@@ -18,11 +18,13 @@
 .headerContainer {
 	display: flex;
 	height: 50px;
-	margin-bottom: 30px;
+	margin-bottom: 24px;
 	padding-left: 12px;
 	padding-right: 12px;
+}
 
-	@media screen and (max-height: 630px) {
+@media screen and (max-height: 630px) {
+	.headerContainer {
 		display: none;
 	}
 }
@@ -56,7 +58,7 @@
 }
 
 .button {
-	height: 48px;
+	height: 64px;
 	width: 150px;
 
 	border: 0;
@@ -72,7 +74,12 @@
 	user-select: none;
 	-webkit-user-select: none;
 	transition: 0.3s;
+}
 
+@media screen and (max-height: 720px) {
+	.button {
+		height: 48px;
+	}
 }
 
 .button:focus {
@@ -84,9 +91,17 @@
 }
 
 .close {
-	padding-bottom: 42px;
+	padding-bottom: 56px;
+}
 
-	@media screen and (max-height: 655px) {
+@media screen and (max-height: 680px) {
+	.close {
+		padding-bottom: 42px;
+	}
+}
+
+@media screen and (max-height: 655px) {
+	.close {
 		padding-bottom: 32px;
 	}
 }
@@ -110,9 +125,17 @@
 .midContainer {
 	display: flex;
 	padding-top: 24px;
-	padding-bottom: 32px;
+	padding-bottom: 48px;
+}
 
-	@media screen and (max-height: 655px) {
+@media screen and (max-height: 740px) {
+	.midContainer {
+		padding-bottom: 32px;
+	}
+}
+
+@media screen and (max-height: 655px) {
+	.midContainer {
 		padding-bottom: 28px;
 	}
 }
@@ -138,31 +161,61 @@
 }
 
 .audioSubsButton {
-	width: 48px;
+	width: 56px;
+	max-height: 56px;
 	padding-top: 3px;
 	border-radius: 100%;
 }
 
+@media screen and (max-height: 720px) {
+	.audioSubsButton {
+		width: 48px;
+		max-height: 48px;
+	}
+}
+
 .fwdRwdContainer {
 	padding-bottom: 32px;
+}
 
-	@media screen and (max-height: 655px) {
+@media screen and (max-height: 655px) {
+	.fwdRwdContainer {
 		padding-bottom: 28px;
 	}
 }
 
 .volumeBtnContainer {
-	padding-bottom: 24px;
+	padding-bottom: 32px;
+}
 
-	@media screen and (max-height: 655px) {
+@media screen and (max-height: 720px) {
+	.volumeBtnContainer {
+		padding-bottom: 24px;
+	}
+}
+
+@media screen and (max-height: 655px) {
+	.volumeBtnContainer {
 		padding-bottom: 18px;
 	}
 }
 
 .volumeButton {
-	height: 38px;
+	height: 52px;
 	width: 100px;
 	padding-top: 4px;
+}
+
+@media screen and (max-height: 720px) {
+	.volumeButton {
+		height: 42px;
+	}
+}
+
+@media screen and (max-height: 655px) {
+	.volumeButton {
+		height: 38px;
+	}
 }
 
 .volumeMuteButtonMuted {
@@ -175,8 +228,10 @@
 
 .volumeSliderContainer {
 	padding: 0 12px 18px;
+}
 
-	@media screen and (max-height: 655px) {
+@media screen and (max-height: 655px) {
+	.volumeSliderContainer {
 		padding-bottom: 12px;
 	}
 }
