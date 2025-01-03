@@ -19,7 +19,7 @@ export default function Home() {
 	const setSliderDebounced = useRef(
 		debounce(async (value: number) => {
 			await actions.volumeSet(+value);
-		}, 150)
+		}, 150),
 	);
 
 	const disablePoll = () => {
